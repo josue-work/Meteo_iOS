@@ -82,3 +82,12 @@ struct IListWeather: Codable {
     var sys: ISys?
     var dt_txt: String?
 }
+
+enum WeatherString: String {
+    case rainy = "Rain"
+    case cloudy = "Clouds"
+    case sunny = "Clear"
+    case drizzle = "Drizzle"
+    case snow = "Snow"
+    case thunderStorm = "Thunderstorm"
+}

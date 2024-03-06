@@ -7,32 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FC8EE426-CF35-470A-8F06-079A57F0076A"
+            uuid = "A40E4D31-0BD3-44A5-A583-2B5B95A01905"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Meteo/MainWeatherViewController.swift"
+            filePath = "Meteo/ViewModels/MainWeatherViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "getForecastWeather()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A266D9AA-6C76-4C7D-B790-6E9FBD5FC8C3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Meteo/MainWeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "getCurrentWeather()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "getSavedString()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

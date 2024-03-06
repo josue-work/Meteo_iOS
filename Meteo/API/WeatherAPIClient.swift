@@ -18,13 +18,18 @@ class WeatherAPIClient {
         guard let lat = coordinate.lat, let lon = coordinate.lon else {
             return
         }
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(Constants.openWeatherAPIKey)") else {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(Constants.openWeatherAPIKey)&units=metric") else {
             return
         }
         networkingService.fetchData(url: url) { data, error in
             if let error = error {
                 completion(.failure(error))
                 return
+            }
+            if let data = data {
+                let jsonString = String(decoding: data, as: UTF8.self)
+//                print("Current weather API JSON string: \n\(jsonString)")
+                Defaults.setCurrentWeatherJSON(jsonString)
             }
             let decoder = JSONDecoder()
             do {
@@ -40,13 +45,18 @@ class WeatherAPIClient {
         guard let lat = coordinate.lat, let lon = coordinate.lon else {
             return
         }
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(Constants.openWeatherAPIKey)") else {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(Constants.openWeatherAPIKey)&units=metric") else {
             return
         }
         networkingService.fetchData(url: url) { data, error in
             if let error = error {
                 completion(.failure(error))
                 return
+            }
+            if let data = data {
+                let jsonString = String(decoding: data, as: UTF8.self)
+//                print("Forecast weather API JSON string: \n\(jsonString)")
+                Defaults.setForecastWeatherJSON(jsonString)
             }
             let decoder = JSONDecoder()
             do {
