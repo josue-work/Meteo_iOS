@@ -13,8 +13,9 @@ class WeatherAPIClient {
     init(networkingService: NetworkingService) {
         self.networkingService = networkingService
     }
-    
-    func fetchCurrentWeatherData(coordinate: ICoordinate, completion: @escaping (Result<ICurrentWeatherAPIModel, Error>) -> Void) {
+
+    func fetchCurrentWeatherData(coordinate: ICoordinate,
+                                 completion: @escaping (Result<ICurrentWeatherAPIModel, Error>) -> Void) {
         guard let lat = coordinate.lat, let lon = coordinate.lon else {
             return
         }
@@ -28,7 +29,6 @@ class WeatherAPIClient {
             }
             if let data = data {
                 let jsonString = String(decoding: data, as: UTF8.self)
-//                print("Current weather API JSON string: \n\(jsonString)")
                 Defaults.setCurrentWeatherJSON(jsonString)
             }
             let decoder = JSONDecoder()
@@ -40,8 +40,9 @@ class WeatherAPIClient {
             }
         }
     }
-    
-    func fetchForecastWeatherData(coordinate: ICoordinate, completion: @escaping (Result<IForecastAPIModel, Error>) -> Void) {
+
+    func fetchForecastWeatherData(coordinate: ICoordinate,
+                                  completion: @escaping (Result<IForecastAPIModel, Error>) -> Void) {
         guard let lat = coordinate.lat, let lon = coordinate.lon else {
             return
         }
@@ -55,7 +56,6 @@ class WeatherAPIClient {
             }
             if let data = data {
                 let jsonString = String(decoding: data, as: UTF8.self)
-//                print("Forecast weather API JSON string: \n\(jsonString)")
                 Defaults.setForecastWeatherJSON(jsonString)
             }
             let decoder = JSONDecoder()

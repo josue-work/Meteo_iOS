@@ -9,13 +9,13 @@ import Foundation
 
 class MockNetworkingService: NetworkingService {
     let jsonString: String
-    
+
     init(jsonString: String) {
         self.jsonString = jsonString
     }
-    
+
     func fetchData(url: URL, completion: @escaping (Data?, Error?) -> Void) {
-        
+
         if let data = jsonString.data(using: .utf8) {
             completion(data, nil)
         } else {
