@@ -8,11 +8,38 @@
 import UIKit
 
 class ForecastTableviewCell: UITableViewCell {
-    
+
     static let identifier = "forecastCell"
-    
+
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
-    
+
+    func fillUIWith(_ data: IListWeather) {
+        guard let dateTime = data.dateTime,
+              let temp = data.main?.temp,
+              let subtitle = data.weather?.first?.main else {
+            return
+        }
+        let date = Date(timeIntervalSince1970: Double(dateTime))
+        let dayOfTheWeek = date.dayOfTheWeek()
+        DispatchQueue.main.async {
+
+            self.dayLabel.text = dayOfTheWeek.capitalized
+            self.temperatureLabel.text = String(format: "%.0f°", temp)
+            if let weatherString = WeatherString(rawValue: subtitle) {
+                switch weatherString {
+                case .cloudy:
+                    self.iconView.image = UIImage(named: "partlySunny")
+                case .rainy,
+                        .drizzle,
+                        .snow,
+                        .thunderStorm:
+                    self.iconView.image = UIImage(named: "rain")
+                case .sunny:
+                    self.iconView.image = UIImage(named: "clear")
+                }
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ protocol NetworkingService {
 }
 
 class MainNetworkingService: NetworkingService {
-    
+
     func fetchData(url: URL, completion: @escaping (Data?, Error?) -> Void) {
         var request = URLRequest(url: url)
 
@@ -20,8 +20,8 @@ class MainNetworkingService: NetworkingService {
             "application/json",
             forHTTPHeaderField: "Content-Type"
         )
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let data = data {
                 completion(data, nil)
             } else if let error = error {
