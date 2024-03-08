@@ -83,7 +83,7 @@ class MainViewController: UIViewController {
                 print("Unable to parse saved favorites data")
             }
         }
-        
+
         view.insertSubview(sideMenuViewController!.view, at: revealSideMenuOnTop ? 2 : 0)
         addChild(sideMenuViewController!)
         sideMenuViewController.didMove(toParent: self)
@@ -193,7 +193,7 @@ extension MainViewController: SideMenuViewControllerDelegate {
             Defaults.setFavoritesJSON(jsonString)
         }
     }
-    
+
     func addFavorite() {
         currentLocation?.placemark { placemark, error in
             guard let placemark = placemark else {
