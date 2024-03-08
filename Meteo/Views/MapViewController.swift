@@ -10,6 +10,7 @@ import MapKit
 
 protocol MapViewDelegate: NSObjectProtocol {
     func addNewFavorite(_ favorite: FavoritesModel)
+    func saveFavorites()
 }
 
 class MapViewController: UIViewController {
@@ -76,6 +77,7 @@ class MapViewController: UIViewController {
                     let newFavorite = FavoritesModel(coordinate: ICoordinate(lat: latDouble, lon: lonDouble),
                                                      cityName: city)
                     self.delegate?.addNewFavorite(newFavorite)
+                    self.delegate?.saveFavorites()
                     self.mapView.addAnnotation(annot)
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
