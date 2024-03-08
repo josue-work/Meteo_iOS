@@ -86,7 +86,7 @@ class SideMenuViewController: UIViewController {
             self.sideMenuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
         }
     }
-    
+
     @IBAction func favoritesButtonAction(_ sender: Any) {
         delegate?.addFavorite()
     }
